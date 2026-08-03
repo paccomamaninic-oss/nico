@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel de tienda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="mi-imagen"> 
+                    <img class="logo-image" src="{{ url_for('static', filename='img/LOGO10.png') }}" alt="Logo de Mundo PC Digital" width="100" height="100">
+                </div>
+                <div><strong>MUNDO PC DIGITAL </strong><small>control de operaciones</small></div>
+            </div>
+            <nav id="resource-nav" aria-label="Tablas de la tienda"></nav>
+            <div class="sidebar-footer"><span class="status-dot"></span> API conectada</div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button id="menu-toggle" class="icon-button mobile-only" type="button" aria-label="Abrir menú">☰</button>
+                <div>
+                    <p class="eyebrow">Centro de datos</p>
+                    <h1 id="page-title">Resumen</h1>
+                </div>
+                <button id="new-record" class="primary-button" type="button"><span>+</span> Nuevo registro</button>
+            </header>
+
+            <section id="overview" class="overview-view">
+                <div class="intro-band">
+                    <div><p class="eyebrow">Vista general</p><h2>Tu tienda, en orden.</h2><p>Administra clientes, inventario, compras y ventas desde un solo lugar.</p></div>
+                    <div class="intro-shape">✦</div>
+                </div>
+                <div id="stats-grid" class="stats-grid"></div>
+                <div class="quick-section"><div class="section-heading"><div><p class="eyebrow">Acceso rápido</p><h2>Tablas disponibles</h2></div></div><div id="quick-links" class="quick-links"></div></div>
+            </section>
+
+            <section id="table-view" class="table-view hidden">
+                <div class="table-toolbar"><div><p id="table-description" class="muted"></p><span id="record-count" class="record-count"></span></div><button id="refresh-table" class="secondary-button" type="button">↻ Actualizar</button></div>
+                <div id="alert" class="alert hidden" role="alert"></div>
+                <div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table><div id="empty-state" class="empty-state hidden">No hay registros todavía.</div></div>
+            </section>
+        </main>
+    </div>
+
+    <dialog id="record-dialog">
+        <form id="record-form" method="dialog">
+            <div class="dialog-heading"><div><p class="eyebrow">Gestión de datos</p><h2 id="dialog-title">Nuevo registro</h2></div><button id="close-dialog" class="icon-button" type="button" aria-label="Cerrar">×</button></div>
+            <div id="form-fields" class="form-grid"></div>
+            <div class="dialog-actions"><button id="cancel-dialog" class="secondary-button" type="button">Cancelar</button><button class="primary-button" type="submit">Guardar registro</button></div>
+        </form>
+    </dialog>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
